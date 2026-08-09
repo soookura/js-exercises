@@ -26,8 +26,10 @@ describe("math", () => {
       expect(sum([1, -2, 3])).toBe(2);
     });
 
+    //浮動小数点演算は誤差がでるため、toBeCloseToを使用
+    // https://note.com/fast_owl436/n/nc7736a97aeda
     it("小数が含まれる時、正しく合計値が出力される", () => {
-      expect(sum([0.1, 0.2, 0.3])).toBe(0.6);
+      expect(sum([0.1, 0.2, 0.3])).toBeCloseTo(0.6);
     });
 
     it("0のみの配列の時、0が出力される", () => {
