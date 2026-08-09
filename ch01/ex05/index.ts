@@ -16,8 +16,6 @@ const sum = (array: number[]): number => {
   return sum;
 };
 
-console.log(0.1 + 0.2);
-
 // 階乗を出力する関数
 // n=4の時、①product = 1*4 ②product = 4*3 ③product = 12*2 でストップ
 const factorial = (n: number): number | undefined => {
