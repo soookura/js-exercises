@@ -10,7 +10,7 @@ const abs = (x: number): number => {
 // 合計値を出力する関数
 const sum = (array: number[]): number => {
   let sum = 0;
-  for (let x of array) {
+  for (const x of array) {
     sum += x;
   }
   return sum;
@@ -18,7 +18,11 @@ const sum = (array: number[]): number => {
 
 // 階乗を出力する関数
 // n=4の時、①product = 1*4 ②product = 4*3 ③product = 12*2 でストップ
-const factorial = (n: number): number => {
+const factorial = (n: number): number | undefined => {
+  // 負の数または正の小数の場合は、undefined
+  if (n < 0 || n % 1 !== 0) {
+    return undefined;
+  }
   let product = 1;
   while (n > 1) {
     product *= n; //product = product * n
