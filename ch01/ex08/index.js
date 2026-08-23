@@ -1,3 +1,5 @@
+// 実行方法, パイプを使用：echo "Hello World" | node ch01/ex08/index.js
+// cat ch01/ex08/file.txt | node ch01/ex08/index.js
 class DefaultMap extends Map {
   constructor(defaultValue) {
     super();
