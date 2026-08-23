@@ -27,7 +27,7 @@
 //       ? "Fizz\n"
 //       : `${x}\n`,
 //   );
-//   return numbersWithFizzbuzz.join("");
+//   return numbersWithFizzbuzz.join(""); // 空文字でつなぐため、["A", "B"] => "AB"となる
 // };
 
 // 提出用
