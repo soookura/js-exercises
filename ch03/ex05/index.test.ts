@@ -1,16 +1,17 @@
-import { lineBreakChange } from "./index.ts";
+import { lfToCrlf, CrlfToLf } from "./index.ts";
 import { describe, it, expect } from "vitest";
 
-describe("改行コードを変換する関数：lineBreakChange", () => {
+describe("改行コードを変換", () => {
   it("LFをCRLFに変換できる", () => {
-    expect(lineBreakChange("a\nb")).toBe("a\r\nb");
+    expect(lfToCrlf("a\nb")).toBe("a\r\nb");
   });
 
   it("CRLFをLFに変換できる", () => {
-    expect(lineBreakChange("a\r\nb")).toBe("a\nb");
+    expect(CrlfToLf("a\r\nb")).toBe("a\nb");
   });
 
   it("改行コードが含まれていない文字列はそのままで返す", () => {
-    expect(lineBreakChange("ab")).toBe("ab");
+    expect(lfToCrlf("ab")).toBe("ab");
+    expect(CrlfToLf("ab")).toBe("ab");
   });
 });
