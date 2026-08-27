@@ -1,4 +1,4 @@
-class Point {
+export class Point {
   x: number;
   y: number;
 
@@ -18,9 +18,3 @@ class Point {
     this.y += anotherPoint.y;
   }
 }
-
-// 以下テスト用
-const p = new Point(1, 2);
-const q = new Point(2, 3);
-p.add(q);
-console.log(p.x, p.y);
