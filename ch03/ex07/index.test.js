@@ -8,3 +8,6 @@ test("ch03-ex07", () => {
   expect(equalArrays(x, y)).toBe(true);
   expect(x).not.toEqual(y);
 });
+
+// 3.9.1より
+// 同値演算子（===）は、オペランドの型が異なる場合には等しいと判定しません。
