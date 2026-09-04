@@ -8,7 +8,7 @@ class Example {
   }
 }
 
-let obj = new Example();
+const obj = new Example();
 // valueOf()
 console.log(Number(obj));
 
