@@ -33,10 +33,7 @@ export function eq(a, b) {
 
   // 以下、どちらか一方の値がオブジェクトで他方が数値または文字列の場合
   // p54 3.9.3.4より、等値演算子(==)では、優先度なしアルゴリズムでオブジェクトを基本型に変換し、2つの基本型値を比較
-  if (
-    typeof a === "object" &&
-    (typeof b === "number" || typeof b === "string")
-  ) {
+  if (a instanceof Object && (typeof b === "number" || typeof b === "string")) {
     // Dateクラスでは常にtoString()変換
     if (a instanceof Date) {
       return eq(a.toString(), b);
@@ -47,10 +44,7 @@ export function eq(a, b) {
         : eq(a.toString(), b);
     }
   }
-  if (
-    typeof b === "object" &&
-    (typeof a === "number" || typeof a === "string")
-  ) {
+  if (b instanceof Object && (typeof a === "number" || typeof a === "string")) {
     if (b instanceof Date) {
       return eq(a, b.toString());
     } else {
@@ -78,29 +72,36 @@ export function lte(a, b) {
     return a === b || a < b;
   }
 
-  if (typeof a === "number" && typeof b === "string") {
-    return lte(a, Number(b));
-  }
-  if (typeof a === "string" && typeof b === "number") {
-    return lte(Number(a), b);
+  // p88: 4.9.2: 少なくとも片一方のオペランドが文字列ではない場合、
+  // 両方のオペランドが数値に変換され、数値的に比較されます。
+  if (typeof a !== "string" || typeof b !== "string") {
+    return lte(Number(a), Number(b));
   }
 
   // p54 3.9.3.4より、比較演算子では、オペランドの一方がオブジェクトの場合
   // 数値優先アルゴリズムを使用して、オブジェクトを基本型に変換
-  if (
-    typeof a === "object" &&
-    (typeof b === "number" || typeof b === "string")
-  ) {
-    return typeof a.valueOf() !== "object"
-      ? lte(a.valueOf(), b)
-      : lte(a.toString(), b);
+
+  // 以下だと両方オブジェクトの場合に対応できない、、
+  // if (a instanceof Object && (typeof b === "number" || typeof b === "string")) {
+  //   return typeof a.valueOf() !== "object"
+  //     ? lte(a.valueOf(), b)
+  //     : lte(a.toString(), b);
+  // }
+  // if (b instanceof Object && (typeof a === "number" || typeof a === "string")) {
+  //   return typeof b.valueOf() !== "object"
+  //     ? lte(a, b.valueOf())
+  //     : lte(a, b.toString());
+  // }
+  if (a instanceof Object || b instanceof Object) {
+    return lte(toPrimitive(a), toPrimitive(b));
   }
-  if (
-    typeof b === "object" &&
-    (typeof a === "number" || typeof a === "string")
-  ) {
-    return typeof a.valueOf() !== "object"
-      ? lte(a, b.valueOf())
-      : lte(a, b.toString());
-  }
+  return false;
+}
+
+// オブジェクトを基本型に変換する（数値優先アルゴリズム, p54 3.9.3.6）
+// 基本型がそのまま渡ってきたら何もしない
+function toPrimitive(x) {
+  if (x instanceof Object) {
+    return typeof x.valueOf() !== "object" ? x.valueOf() : x.toString();
+  } else return x;
 }
