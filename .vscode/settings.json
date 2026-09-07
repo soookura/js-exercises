@@ -1,0 +1,20 @@
+{
+  // 入力中に補完ポップアップを自動表示しない
+  "editor.quickSuggestions": {
+    "other": "off",
+    "comments": "off",
+    "strings": "off"
+  },
+
+  // 1文字入力するごとに提案を出さない
+  "editor.suggestOnTriggerCharacters": false,
+
+  // Enterキーを押したときに自動補完で確定しない
+  "editor.acceptSuggestionOnEnter": "off",
+
+  // 単語のホバー時の補完プレビュー（Ghost Text）を非表示
+  "editor.inlineSuggest.enabled": false,
+
+  // ユーザー設定で保存時にletがconstに自動修正されることを防ぐ
+  "eslint.codeActionsOnSave.rules": ["!prefer-const", "*"]
+}
