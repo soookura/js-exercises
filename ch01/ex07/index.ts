@@ -13,6 +13,7 @@ export class Point {
   }
 
   // 引数として渡された Point クラスのインスタンスの座標を自分の座標に加算する
+  // TSではclassを定義すると、そのクラスは「値」と「型」の両方として利用できる
   add(anotherPoint: Point) {
     this.x += anotherPoint.x;
     this.y += anotherPoint.y;
