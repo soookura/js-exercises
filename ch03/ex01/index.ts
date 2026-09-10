@@ -9,6 +9,7 @@ console.log(Infinity - -Infinity); // => Infinity
 console.log(-Infinity - Infinity); // => -Infinity
 console.log(-Infinity - -Infinity); // => NaN
 
+// -NaN という値が存在しない?
 console.log(NaN + NaN); // => NaN
 console.log(NaN - NaN); // => NaN
 

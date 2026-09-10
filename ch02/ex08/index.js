@@ -13,6 +13,6 @@ const ast_02 = parse("let a; a = 3; console.log(a);", {
   ecmaVersion: "latest",
 });
 
-// replacerはなし、2スペースずつインデント
+// 第二引数replacerはなし（加工・除外なしで出す）、2スペースずつインデント
 console.log(JSON.stringify(ast_01, null, 2));
 console.log(JSON.stringify(ast_02, null, 2));

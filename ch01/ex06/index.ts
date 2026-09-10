@@ -8,6 +8,7 @@ const fib = (n: number): number | undefined => {
   } else {
     let a = 1;
     let b = 1;
+    // メモ：(a,b)は(1,1),(1,2),(2,3),(3,5)...と上がっていく
     for (let i = 1; i <= n - 2; i++) {
       const temp = b;
       b = a + b;

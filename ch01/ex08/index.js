@@ -49,6 +49,7 @@ class Histogram {
 async function histogramFromStdin() {
   process.stdin.setEncoding("utf-8");
   const histogram = new Histogram();
+  // ここで標準入力を読んでいる
   for await (const chunk of process.stdin) {
     histogram.add(chunk);
   }
