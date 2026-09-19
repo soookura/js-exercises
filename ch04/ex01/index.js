@@ -30,3 +30,12 @@ const div = function (z1, z2) {
 };
 
 export { add, sub, mul, div };
+
+// 4.4.1のメモ
+const a = { b: 1 };
+const d = undefined;
+console.log(a.b); // => 1
+console.log(a.c); // => undefined
+console.log(a?.c); // => undefined
+// console.log(d.c); // => TyoeError
+console.log(d?.c); // => undefined
