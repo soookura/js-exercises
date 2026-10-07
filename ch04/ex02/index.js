@@ -1,20 +1,18 @@
 const fizzbuzz = function () {
-  let result = "";
   for (let i = 1; i < 101; i++) {
     if (i % 15 === 0) {
-      result += "FizzBuzz\n";
+      console.log("FizzBuzz");
     } else if (i % 5 === 0) {
-      result += "Buzz\n";
+      console.log("Buzz");
     } else if (i % 3 === 0) {
-      result += "Fizz\n";
+      console.log("Fizz");
     } else {
-      result += `${i}\n`;
+      console.log(i);
     }
   }
-  return result;
 };
 
-console.log(fizzbuzz());
+fizzbuzz();
 // 出力
 // 1;
 // 2;
