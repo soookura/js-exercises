@@ -10,3 +10,7 @@ function block() {
 }
 
 block();
+
+// =>
+// 1
+// 1
