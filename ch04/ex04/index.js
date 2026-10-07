@@ -1,6 +1,7 @@
 export const bitCount = function (n) {
   // >>> で符号なし32ビットの整数表現に変更することで
   // 負の数なども2進数で表現する際に2の補数表現で表すことができる（参考：p85, p51）
+  // n.toString(2)だと、(-1).toString(2) => -1 となりうまく表現できない
   const binary = (n >>> 0).toString(2);
   let count = 0;
   for (const number of binary) {
