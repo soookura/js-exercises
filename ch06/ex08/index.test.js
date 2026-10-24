@@ -1,4 +1,4 @@
-import { restrict, substract } from "./index.test.js";
+import { restrict, substract } from "./index.js";
 import { describe, test, expect } from "vitest";
 
 describe("restrict", () => {
