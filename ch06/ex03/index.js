@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins -- 問題文でisPrototypeOfの使用が指定されているため */
 // p149元コード
 let o = {};
 o.x = 1;

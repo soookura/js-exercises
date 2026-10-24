@@ -17,7 +17,7 @@ export const assign = function (target, ...sources) {
     const objSource = new Object(source);
     // プロパティ名がSymbolのものも含め、列挙可能な独自プロパティをコピーする
     for (const key of Reflect.ownKeys(objSource)) {
-      if (objSource.propertyIsEnumerable(key)) {
+      if (Object.prototype.propertyIsEnumerable.call(objSource, key)) {
         objTarget[key] = objSource[key];
       }
     }

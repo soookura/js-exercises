@@ -32,15 +32,20 @@ object.notConfigurable = 20;
 console.log(object.notEnumerable); // => 20
 console.log(object.notConfigurable); // => 20
 
+//  参考書の書き方では、no-prototype-builtinsでlintエラーが出るため、以下の書き方で統一する
 // hasOwnProperty(あるオブジェクトが、指定した名前の独自プロパティを持つか)
-console.log(object.hasOwnProperty("notWritable")); // => true
-console.log(object.hasOwnProperty("notEnumerable")); // => true
-console.log(object.hasOwnProperty("notConfigurable")); // => true
+console.log(Object.prototype.hasOwnProperty.call(object, "notWritable")); // => true
+console.log(Object.prototype.hasOwnProperty.call(object, "notEnumerable")); // => true
+console.log(Object.prototype.hasOwnProperty.call(object, "notConfigurable")); // => true
 
 // propertyIsEnumerable(指定した名前のプロパティが独自プロパティで、かつ列挙可属性がtrueの場合true)
-console.log(object.propertyIsEnumerable("notWritable")); // => true
-console.log(object.propertyIsEnumerable("notEnumerable")); // => false
-console.log(object.propertyIsEnumerable("notConfigurable")); // => true
+console.log(Object.prototype.propertyIsEnumerable.call(object, "notWritable")); // => true
+console.log(
+  Object.prototype.propertyIsEnumerable.call(object, "notEnumerable"),
+); // => false
+console.log(
+  Object.prototype.propertyIsEnumerable.call(object, "notConfigurable"),
+); // => true
 
 // 削除
 delete object.notWritable;

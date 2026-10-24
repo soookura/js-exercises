@@ -7,7 +7,7 @@ export const returnAllProperty1 = function (obj) {
   // メモ：for/in文は、列挙可な独自/継承プロパティ1つにつき、一度ループ本体を実行、Symbolは含まれない(p154)
   for (const key in obj) {
     // 継承プロパティの場合のみ追加
-    if (!obj.hasOwnProperty(key)) {
+    if (!Object.prototype.hasOwnProperty.call(obj, key)) {
       arr.push(key);
     }
   }
