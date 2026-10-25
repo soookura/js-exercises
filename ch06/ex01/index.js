@@ -4,7 +4,7 @@ function hash(key) {
 
 function newHashTable(capacity) {
   return {
-    size: 0, // マッピング数を示すプロパティ
+    size: 0, // マッピング数を示すプロパティ（key, valueの組の数）
     entries: new Array(capacity), // マッピングを格納する固定長の配列
     get(key) {
       // keyにマップされた値を取得する
@@ -21,11 +21,12 @@ function newHashTable(capacity) {
     put(key, value) {
       // key, valueのマッピングを追加する(keyが存在する場合はvalueを上書きする)
       const index = hash(key) % capacity;
-      // 新規配置の場合
+      // そのindexにマッピングがなく、新規配置の場合
       if (this.entries[index] === undefined) {
         this.entries[index] = { key, value, next: undefined };
+        this.size += 1;
       }
-      // 既存置き換えの場合
+      // そのindexに既存のマッピングがある場合
       else {
         // 第一階層の更新の場合
         let current = this.entries[index];
@@ -33,7 +34,7 @@ function newHashTable(capacity) {
           current.value = value; // 値のみ置き換え
           return;
         }
-        // 第二階層以降の更新の場合
+        // 第二階層以降の途中更新の場合
         while (current.next !== undefined) {
           current = current.next;
           if (current.key === key) {
@@ -41,7 +42,9 @@ function newHashTable(capacity) {
             return;
           }
         }
+        // 末尾に追加
         current.next = { key, value, next: undefined };
+        this.size += 1;
       }
     },
     remove(key) {
@@ -51,12 +54,14 @@ function newHashTable(capacity) {
       let current = this.entries[index];
       if (current !== undefined && current.key === key) {
         this.entries[index] = current.next; // next以降の階層を繰り上げる
+        this.size -= 1;
         return;
       }
       //第二階層以降の削除の場合
       while (current !== undefined && current.next !== undefined) {
         if (current.next.key === key) {
           current.next = current.next.next;
+          this.size -= 1;
           return;
         }
         current = current.next;
