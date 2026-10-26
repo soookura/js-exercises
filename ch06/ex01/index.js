@@ -1,8 +1,8 @@
-function hash(key) {
+export function hash(key) {
   return key.length;
 }
 
-function newHashTable(capacity) {
+export function newHashTable(capacity) {
   return {
     size: 0, // マッピング数を示すプロパティ（key, valueの組の数）
     entries: new Array(capacity), // マッピングを格納する固定長の配列
@@ -17,6 +17,8 @@ function newHashTable(capacity) {
         }
         current = current.next;
       }
+      // キーが見つからない場合はundefinedを返す
+      return undefined;
     },
     put(key, value) {
       // key, valueのマッピングを追加する(keyが存在する場合はvalueを上書きする)
@@ -70,23 +72,23 @@ function newHashTable(capacity) {
   };
 }
 
-function sample() {
-  const hashTable = newHashTable(10);
-  hashTable.put("key1", "value1");
-  hashTable.put("key2", { value: "value2" });
+// function sample() {
+//   const hashTable = newHashTable(10);
+//   hashTable.put("key1", "value1");
+//   hashTable.put("key2", { value: "value2" });
 
-  console.log(`size=${hashTable.size}`); // => size=2
-  console.log(`key1=${hashTable.get("key1")}`); // => key1=value1
-  console.log(`key2=${JSON.stringify(hashTable.get("key2"))}`); // => key2={"value":"value2"}
+//   console.log(`size=${hashTable.size}`); // => size=2
+//   console.log(`key1=${hashTable.get("key1")}`); // => key1=value1
+//   console.log(`key2=${JSON.stringify(hashTable.get("key2"))}`); // => key2={"value":"value2"}
 
-  hashTable.put("key2", "new value");
+//   hashTable.put("key2", "new value");
 
-  console.log(`key2=${hashTable.get("key2")}`); // => key2=new value
+//   console.log(`key2=${hashTable.get("key2")}`); // => key2=new value
 
-  hashTable.remove("key2");
+//   hashTable.remove("key2");
 
-  console.log(`key2=${hashTable.get("key2")}`); // => key2=undefined
-  console.log(`size=${hashTable.size}`); // => size=1
-}
+//   console.log(`key2=${hashTable.get("key2")}`); // => key2=undefined
+//   console.log(`size=${hashTable.size}`); // => size=1
+// }
 
-sample();
+// sample();
