@@ -1,7 +1,7 @@
 import { newHashTable, hash } from "./index.js";
 import { describe, it, expect } from "vitest";
 
-describe(" newHashTable", () => {
+describe("newHashTable", () => {
   it("問題文のsample通り動作する", () => {
     const hashTable = newHashTable(10);
     // put(配置)
