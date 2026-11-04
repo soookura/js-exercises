@@ -36,9 +36,9 @@ export class DynamicSizeArray {
   set(index, value) {
     // indexが負の時、通常の配列だと"-1"というプロパティが作られるが実装が複雑なので、エラーとする
     if (index < 0) {
-      throw new Error("インデックスは0以上にしてください");
+      throw new Error("indexは0以上にしてください");
     }
-    // 指定されたインデックスが入りきるまで、配列の容量を倍にする
+    // 指定されたindexが入りきるまで、配列の容量を倍にする
     while (index >= this.array.length()) {
       const old = this.array;
       this.array = makeFixedSizeArray(old.length() * 2);
@@ -48,7 +48,7 @@ export class DynamicSizeArray {
       }
     }
     this.array.set(index, value);
-    // 動的配列外のインデックスを指定され要素をsetした場合は、動的配列の長さの更新が必要
+    // 動的配列外のindexを指定され要素をsetした場合は、動的配列の長さの更新が必要
     if (index >= this.len) {
       this.len = index + 1;
     }

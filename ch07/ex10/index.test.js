@@ -43,29 +43,29 @@ test("追加した要素を正しく取得できる", () => {
   expect(arr.get(0)).toBe(1);
   expect(arr.get(1)).toBe(2);
 });
-test("配列の範囲外のインデックスを指定してgetすると、undefinedが返る", () => {
+test("配列の範囲外のindexを指定してgetすると、undefinedが返る", () => {
   arr.push(1);
   expect(arr.length()).toBe(1);
   expect(arr.get(100)).toBe(undefined);
   expect(arr.get(-1)).toBe(undefined);
 });
-test("指定したインデックスに要素を新規追加できる", () => {
+test("指定したindexに要素を新規追加できる", () => {
   arr.set(1, 2);
-  expect(arr.length()).toBe(2); // インデックス0は疎になるので、長さは2
+  expect(arr.length()).toBe(2); // index0は疎になるので、長さは2
   expect(arr.get(1)).toBe(2);
   expect(arr.get(0)).toBe(undefined);
 });
-test("配列の長さ以上のインデックスを指定しても、要素を新規追加できる", () => {
+test("配列の長さ以上のindexを指定しても、要素を新規追加できる", () => {
   arr.set(100, 1);
   expect(arr.length()).toBe(101);
   expect(arr.get(100)).toBe(1);
 });
-test("負のインデックスを指定し要素を追加しようとした場合は、エラーになる", () => {
+test("負のindexを指定し要素を追加しようとした場合は、エラーになる", () => {
   expect(() => {
     arr.set(-1, 2);
-  }).toThrow("インデックスは0以上にしてください");
+  }).toThrow("indexは0以上にしてください");
 });
-test("既に要素があるインデックスを指定しsetすると、要素は置き換えられ長さは変わらない", () => {
+test("既に要素があるindexを指定しsetすると、要素は置き換えられ長さは変わらない", () => {
   arr.push(1);
   arr.set(0, 2);
   arr.set(0, 3);
