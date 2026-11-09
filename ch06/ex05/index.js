@@ -3,7 +3,7 @@ const proto = { 1: "number", str1: "string", enumerable: "enumerable" };
 
 // 上を継承したオブジェクト
 const obj = Object.create(proto);
-obj[1] = "changed_number";
+obj[1] = "changed_number"; // 独自プロパティを新規作成するだけで、継承元のプロパティを変更しているわけではない(p149)
 obj[2] = "new_number";
 obj.str1 = "changed_string";
 obj.str2 = "new_string";
