@@ -37,7 +37,7 @@ const answer = {
   ...obj1,
   ...obj3,
   ...obj2,
-  arr: [...arr1, num1, ...arr2],
+  arr: [...arr1, num1, ...arr2], // 配列は同じ値があっても上書きされない
 };
 
 test("ch06/ex10", () => {
