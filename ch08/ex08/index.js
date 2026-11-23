@@ -6,7 +6,7 @@ export function counterGroup() {
     newCounter: function () {
       let n = 0; // 各カウンターのカウント数、newCounterが呼ばれるたびに異なる
       const index = numCounters;
-      numCounters += 1;
+      countArray[index] = 0; // counter作成後に初期値を設定
       return {
         // count()が返すのは増やす前の値
         count: function () {
