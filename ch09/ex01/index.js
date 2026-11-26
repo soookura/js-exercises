@@ -1,12 +1,15 @@
 export class C {
-  // 静的メソッド（クラスメソッド）
+  // 静的メソッド
   static method() {
     return 1;
   }
+  // 静的フィールド
   static C = class {
+    // 静的メソッド
     static method() {
       return 3;
     }
+    // インスタンスメソッド
     method() {
       return 4;
     }
@@ -16,10 +19,13 @@ export class C {
   method() {
     return 2;
   }
+  // インスタンスフィールド
   C = class {
+    // 静的メソッド
     static method() {
       return 5;
     }
+    // インスタンスメソッド
     method() {
       return 6;
     }
@@ -34,3 +40,12 @@ export class C {
 // 以下AIに質問
 // メモ：new new C().C().method() は以下のように解釈
 // ( new ( (new C()).C )() ).method()
+
+// test("class puzzle", () => {
+//   expect(C.method()).toBe(1);
+//   expect(new C().method()).toBe(2);
+//   expect(C.C.method()).toBe(3);
+//   expect(new C.C().method()).toBe(4);
+//   expect(new C().C.method()).toBe(5);
+//   expect(new new C().C().method()).toBe(6);
+// });
